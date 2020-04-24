@@ -12,8 +12,8 @@ const cache = new InMemoryCache();
 export default new ApolloClient({
   link,
   cache,
-  //   clientState: {
-  //     defaults,
-  //     resolvers,
-  //   },
+  clientState: {
+    defaults,
+    resolvers,
+  },
 });
