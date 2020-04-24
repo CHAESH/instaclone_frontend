@@ -3,11 +3,17 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { defaults, resolvers } from "./LocalState";
 
+const link = createHttpLink({
+  uri: "http://localhost:4000/",
+});
+
+const cache = new InMemoryCache();
+
 export default new ApolloClient({
-  link: createHttpLink({ uri: "http://localhost:4000" }),
-  cache: new InMemoryCache(),
-  clientState: {
-    defaults,
-    resolvers,
-  },
+  link,
+  cache,
+  //   clientState: {
+  //     defaults,
+  //     resolvers,
+  //   },
 });
