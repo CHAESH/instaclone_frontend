@@ -3,7 +3,7 @@ import GlobalStyles from "../Styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import Theme from "../Styles/Theme";
 import Router from "./Router";
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
 const QUERY = gql`
@@ -13,13 +13,15 @@ const QUERY = gql`
 `;
 
 export default () => {
-  const { data } = useQuery(QUERY);
-  console.log(data);
-
+  const {
+    data: { isLoggedIn },
+  } = useQuery(QUERY);
   return (
     <ThemeProvider theme={Theme}>
-      <GlobalStyles />
-      <Router isLoggedIn={true} />
+      <>
+        <GlobalStyles />
+        <Router isLoggedIn={isLoggedIn} />
+      </>
     </ThemeProvider>
   );
 };

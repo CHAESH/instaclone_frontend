@@ -4,7 +4,6 @@ import App from "./Components/App";
 import { ApolloProvider } from "@apollo/react-hooks";
 import Client from "./Apollo/Client";
 
-console.log(typeof Client);
 ReactDOM.render(
   <ApolloProvider client={Client}>
     <App />
