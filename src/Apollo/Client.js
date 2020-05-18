@@ -3,22 +3,22 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { defaults, resolvers } from "./LocalState";
 
-const link = createHttpLink({
-  uri: "http://localhost:4000/",
-});
+// const link = createHttpLink({
+//   url: "http://localhost:3000/graphql",
+// });
 
 const cache = new InMemoryCache();
 
 export default new ApolloClient({
-  link,
+  uri: "http://localhost:4000",
   cache,
   clientState: {
     defaults,
     resolvers,
   },
-  header: {
-    Authorization: `Bearer ${localStorage.getItem("token")}`,
-  },
+  // header: {
+  //   Authorization: `Bearer ${localStorage.getItem("token")}`,
+  // },
   // request: async (operation) => {
   //   // const token = localStorage.getItem("token");
   //   const token =
