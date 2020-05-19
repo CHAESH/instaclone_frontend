@@ -13,7 +13,7 @@ export const CREATE_ACCOUNT = gql`
     $firstName: String
     $lastName: String
   ) {
-    createAcount(
+    createAccount(
       username: $username
       email: $email
       firstName: $firstName
