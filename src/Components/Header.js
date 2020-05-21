@@ -70,17 +70,17 @@ const HeaderLink = styled(Link)`
 const ME = gql`
   {
     me {
-      user {
-        username
-      }
+      username
     }
   }
 `;
 
 export default withRouter(({ history }) => {
   const search = useInput("");
-  const { meQuery } = useQuery(ME);
-  console.log(meQuery);
+  const { data, loading } = useQuery(ME);
+  // graphql server로 부터 me 값을 받기 전까지 렌더링 하지 않기위해
+  if (loading) return "";
+  const { me } = data;
   const onSearchSubmit = (e) => {
     e.preventDefault();
     history.push(`/search?term=${search.value}`);
@@ -111,9 +111,15 @@ export default withRouter(({ history }) => {
           <HeaderLink to="/norification">
             <HeartEmtpy />
           </HeaderLink>
-          <HeaderLink to="/username">
-            <User />
-          </HeaderLink>
+          {!me ? (
+            <HeaderLink to="/#">
+              <User />
+            </HeaderLink>
+          ) : (
+            <HeaderLink to={me.username}>
+              <User />
+            </HeaderLink>
+          )}
         </HeaderColumn>
       </HeaderWrapper>
     </Header>
