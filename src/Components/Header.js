@@ -108,7 +108,7 @@ export default withRouter(({ history }) => {
           <HeaderLink to="/explore">
             <Compass />
           </HeaderLink>
-          <HeaderLink to="/norification">
+          <HeaderLink to="/notification">
             <HeartEmtpy />
           </HeaderLink>
           {!me ? (
