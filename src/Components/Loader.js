@@ -16,8 +16,10 @@ const Loader = styled.div`
   animation: ${Animation} 3s linear infinite;
 `;
 
-export default () => (
-  <Loader>
-    <InstaIcon size={36} />
-  </Loader>
-);
+export default () => {
+  return (
+    <Loader>
+      <InstaIcon size={36} />
+    </Loader>
+  );
+};
